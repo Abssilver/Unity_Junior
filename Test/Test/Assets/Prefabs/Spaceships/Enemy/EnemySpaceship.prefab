@@ -44,7 +44,9 @@ GameObject:
   - component: {fileID: 590599124999967860}
   - component: {fileID: 590599124999967756}
   - component: {fileID: 590599124999967758}
-  - component: {fileID: 1192857304249722114}
+  - component: {fileID: 1169305487504665800}
+  - component: {fileID: 804638475324938302}
+  - component: {fileID: 2288657434504337087}
   - component: {fileID: 7280752513643992934}
   - component: {fileID: 5659333393718678246}
   - component: {fileID: 1387087252038566574}
@@ -86,7 +88,7 @@ MonoBehaviour:
   _shipController: {fileID: 590599124999967860}
   _movementSystem: {fileID: 590599124999967756}
   _weaponSystem: {fileID: 590599124999967758}
-  _healthSystem: {fileID: 1192857304249722114}
+  _healthSystem: {fileID: 1169305487504665800}
   _battleIdentity: 2
 --- !u!114 &590599124999967860
 MonoBehaviour:
@@ -129,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapons:
   - {fileID: 590599125223560144}
---- !u!114 &1192857304249722114
+--- !u!114 &1169305487504665800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,15 +140,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 590599124999967857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885949baeeacd6843af767c74fa89bc7, type: 3}
+  m_Script: {fileID: 11500000, guid: f032ee2d0394e094b85efd574d4a7907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
   _maxHealth: 50
+--- !u!114 &804638475324938302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590599124999967857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b020f267d912c4ca840d10206a0869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _scoreForDestroying: 10
+  _healthSystem: {fileID: 1169305487504665800}
+--- !u!114 &2288657434504337087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590599124999967857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13be1b9797ff7a40ad137f7fcde3c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bonusesForDestroying:
   - {fileID: 7081237544398328548, guid: 04207498fcefddb4f9b2b1365392e225, type: 3}
   - {fileID: 8225262311302441042, guid: c3ebcf3e8a631354c9b058afc8cb080a, type: 3}
+  _healthSystem: {fileID: 1169305487504665800}
 --- !u!50 &7280752513643992934
 Rigidbody2D:
   serializedVersion: 4

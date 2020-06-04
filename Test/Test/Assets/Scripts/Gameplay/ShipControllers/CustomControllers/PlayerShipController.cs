@@ -3,6 +3,7 @@ using UnityEngine;
 using Gameplay.Helpers;
 using Gameplay.ShipSystems.CustomShipSystems;
 using Gameplay.Bonuses;
+using Gameplay.Bonuses.CustomBonuses;
 
 namespace Gameplay.ShipControllers.CustomControllers
 {
@@ -32,21 +33,12 @@ namespace Gameplay.ShipControllers.CustomControllers
         }
         //применяем подобранный бонус
         //в зависимости от типа, передаем одну из подсистем корабля, к которым применяется бонус
-        public void ApplyBonus(IPickable bonus)
+        public void ApplyBonus(IPickable<IShipSystem> bonus)
         {
-            switch (bonus.BonusType)
-            {
-                case BonusType.HealthSystem:
-                    if (base.SpaceshipSystems.HealthSystem is PlayerHealthSystem)
-                        bonus.PickUp(base.SpaceshipSystems.HealthSystem as PlayerHealthSystem);
-                    break;
-                case BonusType.WeaponSystem:
-                    if (base.SpaceshipSystems.WeaponSystem is PlayerWeaponSystem)
-                        bonus.PickUp(base.SpaceshipSystems.WeaponSystem as PlayerWeaponSystem);
-                    break;
-                default:
-                    break;
-            }
+            if (bonus is HealthBonus)
+                bonus.PickUp(base.SpaceshipSystems.HealthSystem as PlayerHealthSystem);
+            else if (bonus is WeaponBonus)
+                bonus.PickUp(base.SpaceshipSystems.WeaponSystem as PlayerWeaponSystem);
         }
     }
 }
