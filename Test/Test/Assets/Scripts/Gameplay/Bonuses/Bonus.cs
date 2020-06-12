@@ -3,17 +3,13 @@ using Gameplay.ShipSystems;
 
 namespace Gameplay.Bonuses
 {
-    public abstract class Bonus : MonoBehaviour, IPickable
+    public abstract class Bonus : MonoBehaviour, IPickable<IShipSystem>
     {
         //скорость полета бонуса
         [SerializeField]
         private float _speed;
-        //тип бонуса
-        [SerializeField]
-        private BonusType _bonusType;
-        public BonusType BonusType => _bonusType;
 
-        //метод интефейса. Вызывает действие бонуса
+        //метод интерфейса. Вызывает действие бонуса
         public abstract void PickUp(IShipSystem shipSystem);
         private void Update()
         {

@@ -3,15 +3,27 @@ using Gameplay.Weapons;
 
 namespace Gameplay.ShipSystems
 {
-    public abstract class HealthSystem : MonoBehaviour
+    public class HealthSystem : MonoBehaviour
     {
         //текущее значение прочности
         [SerializeField]
-        private protected float _health;
+        protected float _health;
         //максимальное значение прочности
         [SerializeField]
-        private protected float _maxHealth;
+        protected float _maxHealth;
+        public virtual float Health
+        {
+            protected set => _health = value;
+            get => _health;
+        }
         //применение урона к объекту при взаимодествие с вражеским снарядом
-        public abstract void ApplyDamage(IDamageDealer damageDealer);
+        //Если объект потерял всю прочность, то уничтожаем его
+        public virtual void ApplyDamage(IDamageDealer damageDealer)
+        {
+            Health = Mathf.Clamp(Health - damageDealer.Damage, 0, _maxHealth);
+            //_health -= damageDealer.Damage;
+            if (Health <= 0)
+                Destroy(this.gameObject);
+        }
     }
 }
